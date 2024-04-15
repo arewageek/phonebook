@@ -58,28 +58,7 @@
 
                         <td class="border-2 border-gray-300">
                             <div class="py-2 px-2 flex space-x-2">
-
-                                <div class="hidden w-screen h-screen backdrop-blur-sm left-0 top-0 bg-black/5 p-10 flex justify-center items-center">
-                                    <div class="bg-white rounded-lg w-full lg:w-1/2 shadow">
-                                        <div class="py-2 bg-gray-100 px-5 font-bold flex items-center justify-between">
-                                            <div>
-                                                Edit User Profile
-                                            </div>
-                                            <div class="text-red-700 cursor-pointer">
-                                                [close]
-                                            </div>
-                                        </div>
-                                        <div class="px-5 py-10">
-                                            <form action="">
-                                                <div class="">
-
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <button class="text-[8pt] rounded px-2 py-1.5 text-orange-100 bg-orange-700">Edit</button>
+                                <a href="/contact/{{$contact['id']}}" class="text-[8pt] rounded px-2 py-1.5 text-orange-100 bg-orange-700">Edit</a>
                                 <form action="/contact/delete/{{ $contact['id'] }}" method="post">
                                     @csrf
                                     <button type="submit" class="text-[8pt] rounded px-2 py-1.5 text-red-100 bg-red-700" onclick="confirmDelete()">Delete</button>

@@ -45,4 +45,33 @@ class Contacts extends Controller
             return redirect()->back()->with("error", "Contact could not be deleted");
         }
     }
+
+    function view($id){
+        // view each contact by id
+        $contact = ContactsModel::find($id);
+
+        return view('edit', ['contact' => $contact]);
+    }
+
+    function edit($id, Request $request){
+        // edit each contact by id
+
+        $fName = $request['fname'];
+        $lName = $request['lname'];
+        $email = $request['email'];
+        $tel = $request['tel'];
+
+        $contacts = ContactsModel::find($id);
+        $contacts -> fname = $fName;
+        $contacts -> lname = $lName;
+        $contacts -> email = $email;
+        $contacts -> tel = $tel;
+
+        if($contacts -> save()){
+            return redirect()->back()->with('success', 'Contact Updated');
+        }
+        else{
+            return redirect()->back()->with("error", "Contact could not be updated");
+        }
+    }
 }

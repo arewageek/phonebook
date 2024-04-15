@@ -29,5 +29,7 @@ Route::middleware([
 
     Route::post('/contact/create', [Contacts::class, 'create']);
     Route::post('/contact/delete/{id}', [Contacts::class, 'delete']);
+    Route::get('/contact/{id}', [Contacts::class, 'view']);
+    Route::post('/contact/{id}/edit', [Contacts::class, 'edit']);
     Route::get('/contacts', [Contacts::class, 'index']);
 });
