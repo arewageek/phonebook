@@ -27,6 +27,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/contact/create', [Contacts::class, 'create']);
+    Route::post('/contact/create', [Contacts::class, 'create']);
+    Route::post('/contact/delete/{id}', [Contacts::class, 'delete']);
     Route::get('/contacts', [Contacts::class, 'index']);
 });

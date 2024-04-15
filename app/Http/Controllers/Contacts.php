@@ -9,9 +9,9 @@ class Contacts extends Controller
 {
     function index (){
 
-        $contacts = [];
+        $contacts = \App\Models\Contacts::all();
         
-        return view('contacts') -> with(['contacts', $contacts]);
+        return view('contacts', ['contacts' => $contacts]);
     }
     
     function create (Request $request){
@@ -19,7 +19,7 @@ class Contacts extends Controller
         $lName = $request['lname'];
         $email = $request['email'];
         $tel = $request['tel'];
-
+        
         $contacts = new ContactsModel;
 
         $contacts -> fname = $fName;
@@ -32,6 +32,17 @@ class Contacts extends Controller
         }
         else{
             return redirect()->back()->with("error", "Contact could not be saved");
+        }
+    }
+
+    function delete($id){
+        $contacts = ContactsModel::find($id);
+
+        if($contacts -> delete()){
+            return redirect()->back()->with('success', 'Contact Deleted');
+        }
+        else{
+            return redirect()->back()->with("error", "Contact could not be deleted");
         }
     }
 }
